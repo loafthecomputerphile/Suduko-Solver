@@ -22,6 +22,8 @@ def make_suduko_board(base: int) -> SudukoBoard:
 
     board: SudukoBoard = [ [nums[pattern(r,c)] for c in cols] for r in rows ]
     
+    print_board(board, base)
+    
     for p in random.sample(range(squares),empties):
         board[p//side][p%side] = 0
         
@@ -60,7 +62,7 @@ def main() -> None:
     
     print("\nRunning Moth Flame Optimization...")
     solved_board: SudukoBoard = optimize_sudoku_mfo(
-        board, BASE, 100, 1000
+        board, BASE, 100, 10000
     )
     
     print("\nFinal Result:")
@@ -68,4 +70,4 @@ def main() -> None:
     
     
 if __name__ == "__main__":
-    main()
+    main() 
